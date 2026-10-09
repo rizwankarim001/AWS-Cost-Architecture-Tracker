@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing any build-time dependencies if needed..."
+  pre_build:
+    commands:
+      - echo "Validating files..."
+      - ls -la
+  build:
+    commands:
+      - echo "Building project... (For static sites, we just pass the files through)"
+      - echo "Deployment build timestamp:" $(date)
+artifacts:
+  files:
+    - index.html
