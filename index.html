@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Practice Cloud Sandbox</title>
+    <style>
+        :root {
+            --aws-squid: #232f3e;
+            --aws-orange: #ff9900;
+            --aws-blue: #0073bb;
+            --bg-light: #f4f6f9;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--aws-squid);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--aws-orange);
+        }
+        h1 { margin-top: 0; color: var(--aws-squid); }
+        .badge {
+            background-color: #e1f5fe;
+            color: var(--aws-blue);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        .flow-diagram {
+            background: #2b3a4a;
+            color: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            overflow-x: auto;
+            white-space: nowrap;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .flow-node { color: #56b6c2; font-weight: bold; }
+        .flow-arrow { color: var(--aws-orange); }
+        .interactive-section {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 25px;
+        }
+        button {
+            background-color: var(--aws-orange);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover { background-color: #e08800; }
+        .success-box {
+            margin-top: 15px;
+            padding: 12px;
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border-radius: 6px;
+            display: none;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="badge">🚀 CI/CD Pipeline Practice Target</div>
+    <h1>AWS Infrastructure Sandbox</h1>
+    <p>If you can see this page, your <strong>AWS CodePipeline</strong> and <strong>AWS CodeBuild</strong> automation successfully built and deployed your code directly from GitHub!</p>
+    
+    <h3>Your Target Architecture:</h3>
+    <div class="flow-diagram">
+        Route 53 <span class="flow-arrow">➔</span> 
+        <span class="flow-node">CloudFront</span> <span class="flow-arrow">➔</span> 
+        ALB <span class="flow-arrow">➔</span> 
+        Target Group <span class="flow-arrow">➔</span> 
+        S3 / EC2
+    </div>
+
+    <div class="interactive-section">
+        <h3>Pipeline Live Deployment Test</h3>
+        <p>Click the button below to verify JavaScript functionality is preserved through the build process:</p>
+        <button onclick="verifyDeployment()">Test Live Connection</button>
+        <div id="successMessage" class="success-box">
+            ✅ Connection verified! The build system successfully preserved and packaged your app assets.
+        </div>
+    </div>
+</div>
+
+<script>
+    function verifyDeployment() {
+        document.getElementById('successMessage').style.display = 'block';
+    }
+</script>
+</body>
+</html>
